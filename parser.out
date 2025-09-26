@@ -1,0 +1,1164 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statements
+Rule 1     statement -> INT ID SEMICOLON
+Rule 2     statement -> ID EQUALS expression SEMICOLON
+Rule 3     expression -> expression PLUS term
+Rule 4     expression -> expression MINUS term
+Rule 5     expression -> term
+Rule 6     term -> term TIMES factor
+Rule 7     term -> term DIVIDE factor
+Rule 8     term -> factor
+Rule 9     factor -> NUMBER
+Rule 10    factor -> ID
+Rule 11    expression -> expression GREATER expression
+Rule 12    expression -> expression LESS expression
+Rule 13    expression -> expression GREATEREQUAL expression
+Rule 14    expression -> expression LESSEQUAL expression
+Rule 15    expression -> expression NOTEQUAL expression
+Rule 16    expression -> expression EQUAL expression
+Rule 17    statement -> IF expression statement ELSE statement
+Rule 18    statement -> IF expression statement
+Rule 19    expression -> LPAREN expression RPAREN
+Rule 20    statement -> LBRACE statements RBRACE
+Rule 21    statements -> statements statement
+Rule 22    statements -> statement
+
+Terminals, with rules where they appear
+
+DIVIDE               : 7
+ELSE                 : 17
+EQUAL                : 16
+EQUALS               : 2
+GREATER              : 11
+GREATEREQUAL         : 13
+ID                   : 1 2 10
+IF                   : 17 18
+INT                  : 1
+LBRACE               : 20
+LESS                 : 12
+LESSEQUAL            : 14
+LPAREN               : 19
+MINUS                : 4
+NOTEQUAL             : 15
+NUMBER               : 9
+PLUS                 : 3
+RBRACE               : 20
+RPAREN               : 19
+SEMICOLON            : 1 2
+TIMES                : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 2 3 4 11 11 12 12 13 13 14 14 15 15 16 16 17 18 19
+factor               : 6 7 8
+statement            : 17 17 18 21 22
+statements           : 20 21 0
+term                 : 3 4 5 6 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statements
+    (21) statements -> . statements statement
+    (22) statements -> . statement
+    (1) statement -> . INT ID SEMICOLON
+    (2) statement -> . ID EQUALS expression SEMICOLON
+    (17) statement -> . IF expression statement ELSE statement
+    (18) statement -> . IF expression statement
+    (20) statement -> . LBRACE statements RBRACE
+
+    INT             shift and go to state 3
+    ID              shift and go to state 4
+    IF              shift and go to state 5
+    LBRACE          shift and go to state 6
+
+    statements                     shift and go to state 1
+    statement                      shift and go to state 2
+
+state 1
+
+    (0) S' -> statements .
+    (21) statements -> statements . statement
+    (1) statement -> . INT ID SEMICOLON
+    (2) statement -> . ID EQUALS expression SEMICOLON
+    (17) statement -> . IF expression statement ELSE statement
+    (18) statement -> . IF expression statement
+    (20) statement -> . LBRACE statements RBRACE
+
+    INT             shift and go to state 3
+    ID              shift and go to state 4
+    IF              shift and go to state 5
+    LBRACE          shift and go to state 6
+
+    statement                      shift and go to state 7
+
+state 2
+
+    (22) statements -> statement .
+
+    INT             reduce using rule 22 (statements -> statement .)
+    ID              reduce using rule 22 (statements -> statement .)
+    IF              reduce using rule 22 (statements -> statement .)
+    LBRACE          reduce using rule 22 (statements -> statement .)
+    $end            reduce using rule 22 (statements -> statement .)
+    RBRACE          reduce using rule 22 (statements -> statement .)
+
+
+state 3
+
+    (1) statement -> INT . ID SEMICOLON
+
+    ID              shift and go to state 8
+
+
+state 4
+
+    (2) statement -> ID . EQUALS expression SEMICOLON
+
+    EQUALS          shift and go to state 9
+
+
+state 5
+
+    (17) statement -> IF . expression statement ELSE statement
+    (18) statement -> IF . expression statement
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 10
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 6
+
+    (20) statement -> LBRACE . statements RBRACE
+    (21) statements -> . statements statement
+    (22) statements -> . statement
+    (1) statement -> . INT ID SEMICOLON
+    (2) statement -> . ID EQUALS expression SEMICOLON
+    (17) statement -> . IF expression statement ELSE statement
+    (18) statement -> . IF expression statement
+    (20) statement -> . LBRACE statements RBRACE
+
+    INT             shift and go to state 3
+    ID              shift and go to state 4
+    IF              shift and go to state 5
+    LBRACE          shift and go to state 6
+
+    statements                     shift and go to state 16
+    statement                      shift and go to state 2
+
+state 7
+
+    (21) statements -> statements statement .
+
+    INT             reduce using rule 21 (statements -> statements statement .)
+    ID              reduce using rule 21 (statements -> statements statement .)
+    IF              reduce using rule 21 (statements -> statements statement .)
+    LBRACE          reduce using rule 21 (statements -> statements statement .)
+    $end            reduce using rule 21 (statements -> statements statement .)
+    RBRACE          reduce using rule 21 (statements -> statements statement .)
+
+
+state 8
+
+    (1) statement -> INT ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 17
+
+
+state 9
+
+    (2) statement -> ID EQUALS . expression SEMICOLON
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 18
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 10
+
+    (17) statement -> IF expression . statement ELSE statement
+    (18) statement -> IF expression . statement
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+    (1) statement -> . INT ID SEMICOLON
+    (2) statement -> . ID EQUALS expression SEMICOLON
+    (17) statement -> . IF expression statement ELSE statement
+    (18) statement -> . IF expression statement
+    (20) statement -> . LBRACE statements RBRACE
+
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+    INT             shift and go to state 3
+    ID              shift and go to state 4
+    IF              shift and go to state 5
+    LBRACE          shift and go to state 6
+
+    statement                      shift and go to state 19
+
+state 11
+
+    (5) expression -> term .
+    (6) term -> term . TIMES factor
+    (7) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 5 (expression -> term .)
+    MINUS           reduce using rule 5 (expression -> term .)
+    GREATER         reduce using rule 5 (expression -> term .)
+    LESS            reduce using rule 5 (expression -> term .)
+    GREATEREQUAL    reduce using rule 5 (expression -> term .)
+    LESSEQUAL       reduce using rule 5 (expression -> term .)
+    NOTEQUAL        reduce using rule 5 (expression -> term .)
+    EQUAL           reduce using rule 5 (expression -> term .)
+    INT             reduce using rule 5 (expression -> term .)
+    ID              reduce using rule 5 (expression -> term .)
+    IF              reduce using rule 5 (expression -> term .)
+    LBRACE          reduce using rule 5 (expression -> term .)
+    SEMICOLON       reduce using rule 5 (expression -> term .)
+    RPAREN          reduce using rule 5 (expression -> term .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+
+
+state 12
+
+    (19) expression -> LPAREN . expression RPAREN
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 30
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 13
+
+    (8) term -> factor .
+
+    TIMES           reduce using rule 8 (term -> factor .)
+    DIVIDE          reduce using rule 8 (term -> factor .)
+    PLUS            reduce using rule 8 (term -> factor .)
+    MINUS           reduce using rule 8 (term -> factor .)
+    GREATER         reduce using rule 8 (term -> factor .)
+    LESS            reduce using rule 8 (term -> factor .)
+    GREATEREQUAL    reduce using rule 8 (term -> factor .)
+    LESSEQUAL       reduce using rule 8 (term -> factor .)
+    NOTEQUAL        reduce using rule 8 (term -> factor .)
+    EQUAL           reduce using rule 8 (term -> factor .)
+    INT             reduce using rule 8 (term -> factor .)
+    ID              reduce using rule 8 (term -> factor .)
+    IF              reduce using rule 8 (term -> factor .)
+    LBRACE          reduce using rule 8 (term -> factor .)
+    SEMICOLON       reduce using rule 8 (term -> factor .)
+    RPAREN          reduce using rule 8 (term -> factor .)
+
+
+state 14
+
+    (9) factor -> NUMBER .
+
+    TIMES           reduce using rule 9 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 9 (factor -> NUMBER .)
+    PLUS            reduce using rule 9 (factor -> NUMBER .)
+    MINUS           reduce using rule 9 (factor -> NUMBER .)
+    GREATER         reduce using rule 9 (factor -> NUMBER .)
+    LESS            reduce using rule 9 (factor -> NUMBER .)
+    GREATEREQUAL    reduce using rule 9 (factor -> NUMBER .)
+    LESSEQUAL       reduce using rule 9 (factor -> NUMBER .)
+    NOTEQUAL        reduce using rule 9 (factor -> NUMBER .)
+    EQUAL           reduce using rule 9 (factor -> NUMBER .)
+    INT             reduce using rule 9 (factor -> NUMBER .)
+    ID              reduce using rule 9 (factor -> NUMBER .)
+    IF              reduce using rule 9 (factor -> NUMBER .)
+    LBRACE          reduce using rule 9 (factor -> NUMBER .)
+    SEMICOLON       reduce using rule 9 (factor -> NUMBER .)
+    RPAREN          reduce using rule 9 (factor -> NUMBER .)
+
+
+state 15
+
+    (10) factor -> ID .
+
+    TIMES           reduce using rule 10 (factor -> ID .)
+    DIVIDE          reduce using rule 10 (factor -> ID .)
+    PLUS            reduce using rule 10 (factor -> ID .)
+    MINUS           reduce using rule 10 (factor -> ID .)
+    GREATER         reduce using rule 10 (factor -> ID .)
+    LESS            reduce using rule 10 (factor -> ID .)
+    GREATEREQUAL    reduce using rule 10 (factor -> ID .)
+    LESSEQUAL       reduce using rule 10 (factor -> ID .)
+    NOTEQUAL        reduce using rule 10 (factor -> ID .)
+    EQUAL           reduce using rule 10 (factor -> ID .)
+    INT             reduce using rule 10 (factor -> ID .)
+    ID              reduce using rule 10 (factor -> ID .)
+    IF              reduce using rule 10 (factor -> ID .)
+    LBRACE          reduce using rule 10 (factor -> ID .)
+    SEMICOLON       reduce using rule 10 (factor -> ID .)
+    RPAREN          reduce using rule 10 (factor -> ID .)
+
+
+state 16
+
+    (20) statement -> LBRACE statements . RBRACE
+    (21) statements -> statements . statement
+    (1) statement -> . INT ID SEMICOLON
+    (2) statement -> . ID EQUALS expression SEMICOLON
+    (17) statement -> . IF expression statement ELSE statement
+    (18) statement -> . IF expression statement
+    (20) statement -> . LBRACE statements RBRACE
+
+    RBRACE          shift and go to state 31
+    INT             shift and go to state 3
+    ID              shift and go to state 4
+    IF              shift and go to state 5
+    LBRACE          shift and go to state 6
+
+    statement                      shift and go to state 7
+
+state 17
+
+    (1) statement -> INT ID SEMICOLON .
+
+    INT             reduce using rule 1 (statement -> INT ID SEMICOLON .)
+    ID              reduce using rule 1 (statement -> INT ID SEMICOLON .)
+    IF              reduce using rule 1 (statement -> INT ID SEMICOLON .)
+    LBRACE          reduce using rule 1 (statement -> INT ID SEMICOLON .)
+    $end            reduce using rule 1 (statement -> INT ID SEMICOLON .)
+    RBRACE          reduce using rule 1 (statement -> INT ID SEMICOLON .)
+    ELSE            reduce using rule 1 (statement -> INT ID SEMICOLON .)
+
+
+state 18
+
+    (2) statement -> ID EQUALS expression . SEMICOLON
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+
+    SEMICOLON       shift and go to state 32
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+
+
+state 19
+
+    (17) statement -> IF expression statement . ELSE statement
+    (18) statement -> IF expression statement .
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    ELSE            shift and go to state 33
+    INT             reduce using rule 18 (statement -> IF expression statement .)
+    ID              reduce using rule 18 (statement -> IF expression statement .)
+    IF              reduce using rule 18 (statement -> IF expression statement .)
+    LBRACE          reduce using rule 18 (statement -> IF expression statement .)
+    $end            reduce using rule 18 (statement -> IF expression statement .)
+    RBRACE          reduce using rule 18 (statement -> IF expression statement .)
+
+  ! ELSE            [ reduce using rule 18 (statement -> IF expression statement .) ]
+
+
+state 20
+
+    (3) expression -> expression PLUS . term
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    term                           shift and go to state 34
+    factor                         shift and go to state 13
+
+state 21
+
+    (4) expression -> expression MINUS . term
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    term                           shift and go to state 35
+    factor                         shift and go to state 13
+
+state 22
+
+    (11) expression -> expression GREATER . expression
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 36
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 23
+
+    (12) expression -> expression LESS . expression
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 37
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 24
+
+    (13) expression -> expression GREATEREQUAL . expression
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 38
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 25
+
+    (14) expression -> expression LESSEQUAL . expression
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 39
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 26
+
+    (15) expression -> expression NOTEQUAL . expression
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 40
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 27
+
+    (16) expression -> expression EQUAL . expression
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (5) expression -> . term
+    (11) expression -> . expression GREATER expression
+    (12) expression -> . expression LESS expression
+    (13) expression -> . expression GREATEREQUAL expression
+    (14) expression -> . expression LESSEQUAL expression
+    (15) expression -> . expression NOTEQUAL expression
+    (16) expression -> . expression EQUAL expression
+    (19) expression -> . LPAREN expression RPAREN
+    (6) term -> . term TIMES factor
+    (7) term -> . term DIVIDE factor
+    (8) term -> . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    expression                     shift and go to state 41
+    term                           shift and go to state 11
+    factor                         shift and go to state 13
+
+state 28
+
+    (6) term -> term TIMES . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    factor                         shift and go to state 42
+
+state 29
+
+    (7) term -> term DIVIDE . factor
+    (9) factor -> . NUMBER
+    (10) factor -> . ID
+
+    NUMBER          shift and go to state 14
+    ID              shift and go to state 15
+
+    factor                         shift and go to state 43
+
+state 30
+
+    (19) expression -> LPAREN expression . RPAREN
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+
+    RPAREN          shift and go to state 44
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+
+
+state 31
+
+    (20) statement -> LBRACE statements RBRACE .
+
+    INT             reduce using rule 20 (statement -> LBRACE statements RBRACE .)
+    ID              reduce using rule 20 (statement -> LBRACE statements RBRACE .)
+    IF              reduce using rule 20 (statement -> LBRACE statements RBRACE .)
+    LBRACE          reduce using rule 20 (statement -> LBRACE statements RBRACE .)
+    $end            reduce using rule 20 (statement -> LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 20 (statement -> LBRACE statements RBRACE .)
+    ELSE            reduce using rule 20 (statement -> LBRACE statements RBRACE .)
+
+
+state 32
+
+    (2) statement -> ID EQUALS expression SEMICOLON .
+
+    INT             reduce using rule 2 (statement -> ID EQUALS expression SEMICOLON .)
+    ID              reduce using rule 2 (statement -> ID EQUALS expression SEMICOLON .)
+    IF              reduce using rule 2 (statement -> ID EQUALS expression SEMICOLON .)
+    LBRACE          reduce using rule 2 (statement -> ID EQUALS expression SEMICOLON .)
+    $end            reduce using rule 2 (statement -> ID EQUALS expression SEMICOLON .)
+    RBRACE          reduce using rule 2 (statement -> ID EQUALS expression SEMICOLON .)
+    ELSE            reduce using rule 2 (statement -> ID EQUALS expression SEMICOLON .)
+
+
+state 33
+
+    (17) statement -> IF expression statement ELSE . statement
+    (1) statement -> . INT ID SEMICOLON
+    (2) statement -> . ID EQUALS expression SEMICOLON
+    (17) statement -> . IF expression statement ELSE statement
+    (18) statement -> . IF expression statement
+    (20) statement -> . LBRACE statements RBRACE
+
+    INT             shift and go to state 3
+    ID              shift and go to state 4
+    IF              shift and go to state 5
+    LBRACE          shift and go to state 6
+
+    statement                      shift and go to state 45
+
+state 34
+
+    (3) expression -> expression PLUS term .
+    (6) term -> term . TIMES factor
+    (7) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 3 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 3 (expression -> expression PLUS term .)
+    GREATER         reduce using rule 3 (expression -> expression PLUS term .)
+    LESS            reduce using rule 3 (expression -> expression PLUS term .)
+    GREATEREQUAL    reduce using rule 3 (expression -> expression PLUS term .)
+    LESSEQUAL       reduce using rule 3 (expression -> expression PLUS term .)
+    NOTEQUAL        reduce using rule 3 (expression -> expression PLUS term .)
+    EQUAL           reduce using rule 3 (expression -> expression PLUS term .)
+    INT             reduce using rule 3 (expression -> expression PLUS term .)
+    ID              reduce using rule 3 (expression -> expression PLUS term .)
+    IF              reduce using rule 3 (expression -> expression PLUS term .)
+    LBRACE          reduce using rule 3 (expression -> expression PLUS term .)
+    SEMICOLON       reduce using rule 3 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 3 (expression -> expression PLUS term .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+
+
+state 35
+
+    (4) expression -> expression MINUS term .
+    (6) term -> term . TIMES factor
+    (7) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 4 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 4 (expression -> expression MINUS term .)
+    GREATER         reduce using rule 4 (expression -> expression MINUS term .)
+    LESS            reduce using rule 4 (expression -> expression MINUS term .)
+    GREATEREQUAL    reduce using rule 4 (expression -> expression MINUS term .)
+    LESSEQUAL       reduce using rule 4 (expression -> expression MINUS term .)
+    NOTEQUAL        reduce using rule 4 (expression -> expression MINUS term .)
+    EQUAL           reduce using rule 4 (expression -> expression MINUS term .)
+    INT             reduce using rule 4 (expression -> expression MINUS term .)
+    ID              reduce using rule 4 (expression -> expression MINUS term .)
+    IF              reduce using rule 4 (expression -> expression MINUS term .)
+    LBRACE          reduce using rule 4 (expression -> expression MINUS term .)
+    SEMICOLON       reduce using rule 4 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 4 (expression -> expression MINUS term .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+
+
+state 36
+
+    (11) expression -> expression GREATER expression .
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    INT             reduce using rule 11 (expression -> expression GREATER expression .)
+    ID              reduce using rule 11 (expression -> expression GREATER expression .)
+    IF              reduce using rule 11 (expression -> expression GREATER expression .)
+    LBRACE          reduce using rule 11 (expression -> expression GREATER expression .)
+    SEMICOLON       reduce using rule 11 (expression -> expression GREATER expression .)
+    RPAREN          reduce using rule 11 (expression -> expression GREATER expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+
+  ! PLUS            [ reduce using rule 11 (expression -> expression GREATER expression .) ]
+  ! MINUS           [ reduce using rule 11 (expression -> expression GREATER expression .) ]
+  ! GREATER         [ reduce using rule 11 (expression -> expression GREATER expression .) ]
+  ! LESS            [ reduce using rule 11 (expression -> expression GREATER expression .) ]
+  ! GREATEREQUAL    [ reduce using rule 11 (expression -> expression GREATER expression .) ]
+  ! LESSEQUAL       [ reduce using rule 11 (expression -> expression GREATER expression .) ]
+  ! NOTEQUAL        [ reduce using rule 11 (expression -> expression GREATER expression .) ]
+  ! EQUAL           [ reduce using rule 11 (expression -> expression GREATER expression .) ]
+
+
+state 37
+
+    (12) expression -> expression LESS expression .
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    INT             reduce using rule 12 (expression -> expression LESS expression .)
+    ID              reduce using rule 12 (expression -> expression LESS expression .)
+    IF              reduce using rule 12 (expression -> expression LESS expression .)
+    LBRACE          reduce using rule 12 (expression -> expression LESS expression .)
+    SEMICOLON       reduce using rule 12 (expression -> expression LESS expression .)
+    RPAREN          reduce using rule 12 (expression -> expression LESS expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+
+  ! PLUS            [ reduce using rule 12 (expression -> expression LESS expression .) ]
+  ! MINUS           [ reduce using rule 12 (expression -> expression LESS expression .) ]
+  ! GREATER         [ reduce using rule 12 (expression -> expression LESS expression .) ]
+  ! LESS            [ reduce using rule 12 (expression -> expression LESS expression .) ]
+  ! GREATEREQUAL    [ reduce using rule 12 (expression -> expression LESS expression .) ]
+  ! LESSEQUAL       [ reduce using rule 12 (expression -> expression LESS expression .) ]
+  ! NOTEQUAL        [ reduce using rule 12 (expression -> expression LESS expression .) ]
+  ! EQUAL           [ reduce using rule 12 (expression -> expression LESS expression .) ]
+
+
+state 38
+
+    (13) expression -> expression GREATEREQUAL expression .
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    INT             reduce using rule 13 (expression -> expression GREATEREQUAL expression .)
+    ID              reduce using rule 13 (expression -> expression GREATEREQUAL expression .)
+    IF              reduce using rule 13 (expression -> expression GREATEREQUAL expression .)
+    LBRACE          reduce using rule 13 (expression -> expression GREATEREQUAL expression .)
+    SEMICOLON       reduce using rule 13 (expression -> expression GREATEREQUAL expression .)
+    RPAREN          reduce using rule 13 (expression -> expression GREATEREQUAL expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+
+  ! PLUS            [ reduce using rule 13 (expression -> expression GREATEREQUAL expression .) ]
+  ! MINUS           [ reduce using rule 13 (expression -> expression GREATEREQUAL expression .) ]
+  ! GREATER         [ reduce using rule 13 (expression -> expression GREATEREQUAL expression .) ]
+  ! LESS            [ reduce using rule 13 (expression -> expression GREATEREQUAL expression .) ]
+  ! GREATEREQUAL    [ reduce using rule 13 (expression -> expression GREATEREQUAL expression .) ]
+  ! LESSEQUAL       [ reduce using rule 13 (expression -> expression GREATEREQUAL expression .) ]
+  ! NOTEQUAL        [ reduce using rule 13 (expression -> expression GREATEREQUAL expression .) ]
+  ! EQUAL           [ reduce using rule 13 (expression -> expression GREATEREQUAL expression .) ]
+
+
+state 39
+
+    (14) expression -> expression LESSEQUAL expression .
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    INT             reduce using rule 14 (expression -> expression LESSEQUAL expression .)
+    ID              reduce using rule 14 (expression -> expression LESSEQUAL expression .)
+    IF              reduce using rule 14 (expression -> expression LESSEQUAL expression .)
+    LBRACE          reduce using rule 14 (expression -> expression LESSEQUAL expression .)
+    SEMICOLON       reduce using rule 14 (expression -> expression LESSEQUAL expression .)
+    RPAREN          reduce using rule 14 (expression -> expression LESSEQUAL expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+
+  ! PLUS            [ reduce using rule 14 (expression -> expression LESSEQUAL expression .) ]
+  ! MINUS           [ reduce using rule 14 (expression -> expression LESSEQUAL expression .) ]
+  ! GREATER         [ reduce using rule 14 (expression -> expression LESSEQUAL expression .) ]
+  ! LESS            [ reduce using rule 14 (expression -> expression LESSEQUAL expression .) ]
+  ! GREATEREQUAL    [ reduce using rule 14 (expression -> expression LESSEQUAL expression .) ]
+  ! LESSEQUAL       [ reduce using rule 14 (expression -> expression LESSEQUAL expression .) ]
+  ! NOTEQUAL        [ reduce using rule 14 (expression -> expression LESSEQUAL expression .) ]
+  ! EQUAL           [ reduce using rule 14 (expression -> expression LESSEQUAL expression .) ]
+
+
+state 40
+
+    (15) expression -> expression NOTEQUAL expression .
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    INT             reduce using rule 15 (expression -> expression NOTEQUAL expression .)
+    ID              reduce using rule 15 (expression -> expression NOTEQUAL expression .)
+    IF              reduce using rule 15 (expression -> expression NOTEQUAL expression .)
+    LBRACE          reduce using rule 15 (expression -> expression NOTEQUAL expression .)
+    SEMICOLON       reduce using rule 15 (expression -> expression NOTEQUAL expression .)
+    RPAREN          reduce using rule 15 (expression -> expression NOTEQUAL expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+
+  ! PLUS            [ reduce using rule 15 (expression -> expression NOTEQUAL expression .) ]
+  ! MINUS           [ reduce using rule 15 (expression -> expression NOTEQUAL expression .) ]
+  ! GREATER         [ reduce using rule 15 (expression -> expression NOTEQUAL expression .) ]
+  ! LESS            [ reduce using rule 15 (expression -> expression NOTEQUAL expression .) ]
+  ! GREATEREQUAL    [ reduce using rule 15 (expression -> expression NOTEQUAL expression .) ]
+  ! LESSEQUAL       [ reduce using rule 15 (expression -> expression NOTEQUAL expression .) ]
+  ! NOTEQUAL        [ reduce using rule 15 (expression -> expression NOTEQUAL expression .) ]
+  ! EQUAL           [ reduce using rule 15 (expression -> expression NOTEQUAL expression .) ]
+
+
+state 41
+
+    (16) expression -> expression EQUAL expression .
+    (3) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (11) expression -> expression . GREATER expression
+    (12) expression -> expression . LESS expression
+    (13) expression -> expression . GREATEREQUAL expression
+    (14) expression -> expression . LESSEQUAL expression
+    (15) expression -> expression . NOTEQUAL expression
+    (16) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATEREQUAL resolved as shift
+  ! shift/reduce conflict for LESSEQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    INT             reduce using rule 16 (expression -> expression EQUAL expression .)
+    ID              reduce using rule 16 (expression -> expression EQUAL expression .)
+    IF              reduce using rule 16 (expression -> expression EQUAL expression .)
+    LBRACE          reduce using rule 16 (expression -> expression EQUAL expression .)
+    SEMICOLON       reduce using rule 16 (expression -> expression EQUAL expression .)
+    RPAREN          reduce using rule 16 (expression -> expression EQUAL expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    GREATER         shift and go to state 22
+    LESS            shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESSEQUAL       shift and go to state 25
+    NOTEQUAL        shift and go to state 26
+    EQUAL           shift and go to state 27
+
+  ! PLUS            [ reduce using rule 16 (expression -> expression EQUAL expression .) ]
+  ! MINUS           [ reduce using rule 16 (expression -> expression EQUAL expression .) ]
+  ! GREATER         [ reduce using rule 16 (expression -> expression EQUAL expression .) ]
+  ! LESS            [ reduce using rule 16 (expression -> expression EQUAL expression .) ]
+  ! GREATEREQUAL    [ reduce using rule 16 (expression -> expression EQUAL expression .) ]
+  ! LESSEQUAL       [ reduce using rule 16 (expression -> expression EQUAL expression .) ]
+  ! NOTEQUAL        [ reduce using rule 16 (expression -> expression EQUAL expression .) ]
+  ! EQUAL           [ reduce using rule 16 (expression -> expression EQUAL expression .) ]
+
+
+state 42
+
+    (6) term -> term TIMES factor .
+
+    TIMES           reduce using rule 6 (term -> term TIMES factor .)
+    DIVIDE          reduce using rule 6 (term -> term TIMES factor .)
+    PLUS            reduce using rule 6 (term -> term TIMES factor .)
+    MINUS           reduce using rule 6 (term -> term TIMES factor .)
+    GREATER         reduce using rule 6 (term -> term TIMES factor .)
+    LESS            reduce using rule 6 (term -> term TIMES factor .)
+    GREATEREQUAL    reduce using rule 6 (term -> term TIMES factor .)
+    LESSEQUAL       reduce using rule 6 (term -> term TIMES factor .)
+    NOTEQUAL        reduce using rule 6 (term -> term TIMES factor .)
+    EQUAL           reduce using rule 6 (term -> term TIMES factor .)
+    INT             reduce using rule 6 (term -> term TIMES factor .)
+    ID              reduce using rule 6 (term -> term TIMES factor .)
+    IF              reduce using rule 6 (term -> term TIMES factor .)
+    LBRACE          reduce using rule 6 (term -> term TIMES factor .)
+    SEMICOLON       reduce using rule 6 (term -> term TIMES factor .)
+    RPAREN          reduce using rule 6 (term -> term TIMES factor .)
+
+
+state 43
+
+    (7) term -> term DIVIDE factor .
+
+    TIMES           reduce using rule 7 (term -> term DIVIDE factor .)
+    DIVIDE          reduce using rule 7 (term -> term DIVIDE factor .)
+    PLUS            reduce using rule 7 (term -> term DIVIDE factor .)
+    MINUS           reduce using rule 7 (term -> term DIVIDE factor .)
+    GREATER         reduce using rule 7 (term -> term DIVIDE factor .)
+    LESS            reduce using rule 7 (term -> term DIVIDE factor .)
+    GREATEREQUAL    reduce using rule 7 (term -> term DIVIDE factor .)
+    LESSEQUAL       reduce using rule 7 (term -> term DIVIDE factor .)
+    NOTEQUAL        reduce using rule 7 (term -> term DIVIDE factor .)
+    EQUAL           reduce using rule 7 (term -> term DIVIDE factor .)
+    INT             reduce using rule 7 (term -> term DIVIDE factor .)
+    ID              reduce using rule 7 (term -> term DIVIDE factor .)
+    IF              reduce using rule 7 (term -> term DIVIDE factor .)
+    LBRACE          reduce using rule 7 (term -> term DIVIDE factor .)
+    SEMICOLON       reduce using rule 7 (term -> term DIVIDE factor .)
+    RPAREN          reduce using rule 7 (term -> term DIVIDE factor .)
+
+
+state 44
+
+    (19) expression -> LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    GREATER         reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    LESS            reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    GREATEREQUAL    reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    LESSEQUAL       reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    NOTEQUAL        reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    INT             reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    ID              reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    IF              reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    LBRACE          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+
+
+state 45
+
+    (17) statement -> IF expression statement ELSE statement .
+
+    INT             reduce using rule 17 (statement -> IF expression statement ELSE statement .)
+    ID              reduce using rule 17 (statement -> IF expression statement ELSE statement .)
+    IF              reduce using rule 17 (statement -> IF expression statement ELSE statement .)
+    LBRACE          reduce using rule 17 (statement -> IF expression statement ELSE statement .)
+    $end            reduce using rule 17 (statement -> IF expression statement ELSE statement .)
+    RBRACE          reduce using rule 17 (statement -> IF expression statement ELSE statement .)
+    ELSE            reduce using rule 17 (statement -> IF expression statement ELSE statement .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ELSE in state 19 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 36 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 36 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 36 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 36 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 36 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 36 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 36 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 36 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 37 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 37 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 37 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 37 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 37 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 37 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 37 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 37 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 38 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 38 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 38 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 38 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 38 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 38 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 38 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 38 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 39 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 39 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 39 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 39 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 39 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 39 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 40 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 40 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 40 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 40 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 40 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 40 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 41 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 41 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 41 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 41 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQUAL in state 41 resolved as shift
+WARNING: shift/reduce conflict for LESSEQUAL in state 41 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUAL in state 41 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 41 resolved as shift
