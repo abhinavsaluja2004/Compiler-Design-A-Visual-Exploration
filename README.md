@@ -54,21 +54,37 @@ By integrating **graphical outputs** (such as parse trees and intermediate code 
 ## 📂 Project Structure
 
 compiler_design_PBL/
+
 │
+
 ├── main.py # Source code for compiler phases
+
 │ ├── lexer.py # Lexical analyzer implementation
+
 │ ├── parser.py # Syntax analyzer and parse tree generator
+
 │ ├── semantic.py # Semantic analysis module
+
 │ ├── intermediate.py # Intermediate code generation logic
+
 │ ├── optimizer.py # Code optimization module
+
 │ ├── codegen.py # Target code generator
+
 │ └── gui.py # GUI integration for visual outputs
+
 │
+
 ├── parser.out # Output file
+
 ├── ast.png # Images, icons, and sample visualization outputs
+
 ├── utils.py # Python dependencies
+
 ├── README.md # Project documentation
+
 └── LICENSE # License details
+
 
 
 ---
@@ -93,15 +109,15 @@ compiler_design_PBL/
 
 3. Click “Run” or the desired compiler phase button to visualize each stage:
 
-  3.1 View tokens generated during lexical analysis
+  - View tokens generated during lexical analysis
   
-  3.2 Examine the parse tree during syntax analysis
+  - Examine the parse tree during syntax analysis
 
-  3.3 Check for semantic errors and corrections
+  - Check for semantic errors and corrections
 
-  3.4 Observe intermediate code and optimization steps
+  - Observe intermediate code and optimization steps
 
-  3.5 Generate and preview the final target code
+   - Generate and preview the final target code
 
 4. Save the generated outputs or visualizations for further study
 
@@ -109,11 +125,11 @@ compiler_design_PBL/
 
 This project serves as an educational tool to:
 
-a. Help students visualize how compilers work internally
+1. Help students visualize how compilers work internally
 
-b. Aid instructors in demonstrating compilation stages in classrooms
+2. Aid instructors in demonstrating compilation stages in classrooms
 
-c. Assist developers and researchers in debugging and experimenting with compiler logic
+3. Assist developers and researchers in debugging and experimenting with compiler logic
 
 ## 🔧 Future Enhancements
 
@@ -130,7 +146,7 @@ c. Assist developers and researchers in debugging and experimenting with compile
 
 ## 📜 License
 
-This project is licensed under the GPU License.
+This project is licensed under the GNU GENERAL PUBLIC LICENSE.
 .
 
 ## ⭐ Acknowledgments
